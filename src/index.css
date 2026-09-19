@@ -4,6 +4,7 @@
 
 body {
   margin: 0;
+  background: #e9eff6;
   font-family:
     Inter,
     'Noto Sans Thai',
@@ -454,5 +455,49 @@ input:focus {
   .sd-pixel-field span {
     animation-duration: 1ms !important;
     animation-delay: 0ms !important;
+  }
+}
+
+
+.sd-page {
+  background:
+    radial-gradient(circle at 12% 22%, rgba(37, 99, 235, 0.07), transparent 28%),
+    radial-gradient(circle at 92% 48%, rgba(249, 115, 22, 0.06), transparent 30%),
+    #e9eff6;
+}
+
+.sd-search-panel {
+  background: #f7f9fc;
+  border: 1px solid #dbe4ee;
+}
+
+.result-card {
+  color: #10203d;
+}
+
+.result-card-blue {
+  background: #dfeeff;
+  border-color: #8dbaf2;
+  border-top-color: #2563eb;
+}
+
+.result-card-orange {
+  background: #ffead4;
+  border-color: #f5b879;
+  border-top-color: #f97316;
+}
+
+.result-card-blue:hover,
+.result-card-orange:hover {
+  filter: brightness(0.99);
+}
+
+.sd-profile-panel {
+  background: #f3f6fa;
+}
+
+@media (max-width: 640px) {
+  .sd-search-panel {
+    padding: 0.85rem;
   }
 }
