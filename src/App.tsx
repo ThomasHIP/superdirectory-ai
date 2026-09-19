@@ -228,7 +228,7 @@ function App() {
         </div>
       )}
 
-      <div className='min-h-screen bg-slate-50 text-slate-900'>
+      <div className='min-h-screen sd-page text-slate-900'>
         <header className='bg-white border-b-4 border-orange-500'>
           <div className='max-w-6xl mx-auto px-5 py-4 flex items-center'>
             <BrandMark compact />
@@ -238,14 +238,16 @@ function App() {
         <section className='bg-gradient-to-br from-blue-950 via-blue-900 to-blue-700 text-white'>
           <div className='max-w-6xl mx-auto px-5 py-12'>
             <div className='text-orange-400 font-black tracking-widest'>FULL 2026 OTOP REGISTRY</div>
-            <h1 className='text-4xl md:text-6xl font-black mt-2'>98,177 OTOP Records</h1>
-            <p className='text-blue-100 mt-3 text-lg leading-relaxed'>ค้นหาผู้ประกอบการ OTOP<br />ทั่วประเทศ<br />และอัพเดทข้อมูลธุรกิจของคุณ</p>
+            <div className='text-blue-100 font-bold mt-1'>ฐานข้อมูลผู้ประกอบการ OTOP ทั่วประเทศ ปี 2026</div>
+            <h1 className='text-4xl md:text-6xl font-black mt-3'>98,177 OTOP Records</h1>
+            <div className='text-2xl md:text-3xl font-black text-white mt-1'>98,177 รายการ</div>
+            <p className='text-blue-100 mt-4 text-lg leading-relaxed'>ค้นหาผู้ประกอบการ OTOP ทั่วประเทศ และอัปเดตข้อมูลธุรกิจของคุณ<br /><span className='text-base'>Search OTOP businesses nationwide and keep your business profile up to date.</span></p>
           </div>
         </section>
 
         <main className='max-w-6xl mx-auto px-5 py-7'>
           <form
-            className='bg-white p-4 rounded-2xl shadow-lg flex gap-2'
+            className='sd-search-panel p-4 rounded-2xl shadow-lg flex gap-2'
             onSubmit={(e) => {
               e.preventDefault();
               search();
@@ -256,40 +258,40 @@ function App() {
               <input
                 value={q}
                 onChange={(e) => setQ(e.target.value)}
-                placeholder='ค้นหา เช่น Balm, Hat, หมวก, เชียงใหม่…'
+                placeholder='ค้นหา / Search เช่น กาแฟ, Coffee, หมวก, Hat…'
                 className='w-full border rounded-xl py-3 pl-12 pr-4'
               />
             </div>
-            <button className='bg-orange-500 text-white font-black px-5 rounded-xl'>ค้นหา</button>
+            <button className='bg-orange-500 text-white font-black px-4 rounded-xl leading-tight'><span className='block'>ค้นหา</span><span className='block text-xs'>Search</span></button>
           </form>
 
           {!searched && !loading && (
             <div className='text-center py-14'>
               <Search className='mx-auto text-blue-800' size={36} />
-              <h2 className='text-xl font-black text-blue-950 mt-3'>เริ่มค้นหา OTOP</h2>
-              <p className='text-slate-500 mt-2'>ค้นหาได้ทั้งภาษาไทยและภาษาอังกฤษ</p>
+              <h2 className='text-xl font-black text-blue-950 mt-3'>เริ่มค้นหา OTOP / Start Searching</h2>
+              <p className='text-slate-600 mt-2'>ค้นหาได้ทั้งภาษาไทยและภาษาอังกฤษ / Search in Thai or English</p>
             </div>
           )}
 
           {searched && (
             <div className='flex flex-wrap justify-between items-center gap-3 mt-6'>
               <div>
-                <b>{loading ? 'กำลังค้นหา…' : total.toLocaleString() + ' records found'}</b>
-                <div className='text-sm text-slate-500'>แตะผลการค้นหาเพื่อเปิด Business Profile</div>
+                <b>{loading ? 'กำลังค้นหา… / Searching…' : 'พบ ' + total.toLocaleString() + ' รายการ / ' + total.toLocaleString() + ' records found'}</b>
+                <div className='text-sm text-slate-600'>แตะผลการค้นหาเพื่อเปิดโปรไฟล์ธุรกิจ / Tap a result to open Business Profile</div>
               </div>
               <div className='flex items-center gap-2 text-sm bg-emerald-50 text-emerald-800 px-3 py-2 rounded-full'>
-                <Database size={16} /> Full 98,177 database
+                <Database size={16} /> ฐานข้อมูลเต็ม 98,177 รายการ / Full database
               </div>
             </div>
           )}
 
           <div className='grid md:grid-cols-2 gap-4 mt-5'>
-            {items.map((x) => (
+            {items.map((x, index) => (
               <button
                 key={x.operator_id}
                 type='button'
                 onClick={() => openDetail(x.operator_id)}
-                className='text-left bg-white border rounded-2xl p-5 shadow-sm border-t-4 border-t-blue-700 hover:shadow-md active:scale-[0.99] transition'
+                className={`result-card ${index % 2 === 0 ? 'result-card-blue' : 'result-card-orange'} text-left border rounded-2xl p-5 shadow-sm border-t-4 hover:shadow-md active:scale-[0.99] transition`}
               >
                 <div className='flex justify-between gap-3'>
                   <div>
@@ -298,22 +300,22 @@ function App() {
                   </div>
                   <BadgeCheck className='text-blue-700 shrink-0' />
                 </div>
-                <div className='mt-3 text-sm bg-slate-100 p-3 rounded-lg'>OTOP No: {x.otop_no || '—'}</div>
+                <div className='mt-3 text-sm bg-white/70 p-3 rounded-lg'><b>เลข OTOP / OTOP No:</b> {x.otop_no || '—'}</div>
                 <div className='mt-3 inline-block text-sm bg-emerald-50 text-emerald-800 px-3 py-2 rounded-full'>{x.operator_type || 'OTOP'}</div>
-                <div className='mt-3 text-xs font-bold text-blue-700'>แตะเพื่อเปิด Business Profile →</div>
+                <div className='mt-3 text-xs font-bold text-blue-800'>แตะเพื่อเปิดโปรไฟล์ธุรกิจ / Tap to open Business Profile →</div>
               </button>
             ))}
           </div>
 
           {searched && !loading && items.length === 0 && (
-            <div className='text-center py-16 text-slate-500'>ไม่พบข้อมูลที่ตรงกับ “{q.trim()}”</div>
+            <div className='text-center py-16 text-slate-600'>ไม่พบข้อมูลที่ตรงกับ “{q.trim()}” / No matching records found.</div>
           )}
         </main>
       </div>
 
       {(detailLoading || selected) && (
         <div className='fixed inset-0 z-[5000] bg-slate-950/70 flex items-end md:items-center justify-center' onClick={closeDetail}>
-          <div className='bg-white w-full md:max-w-2xl max-h-[92vh] overflow-y-auto rounded-t-3xl md:rounded-3xl p-5 md:p-7' onClick={(e) => e.stopPropagation()}>
+          <div className='sd-profile-panel w-full md:max-w-2xl max-h-[92vh] overflow-y-auto rounded-t-3xl md:rounded-3xl p-5 md:p-7' onClick={(e) => e.stopPropagation()}>
             {detailLoading && <div className='py-16 text-center font-bold'>กำลังโหลด Business Profile…</div>}
             {selected && (
               <>
@@ -321,17 +323,17 @@ function App() {
                   <div>
                     <h2 className='text-2xl md:text-3xl font-black text-blue-950'>{selected.operator.official_name}</h2>
                     <div className='inline-block mt-2 text-xs font-bold bg-blue-50 text-blue-800 px-3 py-2 rounded-full'>
-                      {selected.profile ? 'Verified Business Profile' : 'Official Registry Record · Unclaimed'}
+                      {selected.profile ? 'โปรไฟล์ธุรกิจที่ยืนยันแล้ว / Verified Business Profile' : 'ข้อมูลทะเบียนทางการ · ยังไม่มีผู้ยืนยัน / Official Registry Record · Unclaimed'}
                     </div>
                   </div>
                   <button className='p-2 rounded-full bg-slate-100' onClick={closeDetail}><X /></button>
                 </div>
 
                 <div className='grid gap-3 mt-5'>
-                  <div className='bg-slate-50 rounded-xl p-4'><div className='text-xs text-slate-500'>OTOP Number</div><div className='font-bold mt-1'>{selected.operator.otop_no || '—'}</div></div>
-                  <div className='bg-slate-50 rounded-xl p-4'><div className='text-xs text-slate-500'>Location</div><div className='font-bold mt-1'>{[selected.operator.subdistrict, selected.operator.district, selected.operator.province].filter(Boolean).join(' · ')}</div></div>
-                  <div className='bg-slate-50 rounded-xl p-4'><div className='text-xs text-slate-500'>Operator Type</div><div className='font-bold mt-1'>{selected.operator.operator_type || '—'}</div></div>
-                  <div className='bg-slate-50 rounded-xl p-4'><div className='text-xs text-slate-500'>OTOP Level / Stars</div><div className='font-bold mt-1'>{selected.profile?.otop_level || 'ยังไม่ได้อัปเดต'} {selected.profile?.otop_stars ? '· ' + '★'.repeat(selected.profile.otop_stars) : ''}</div></div>
+                  <div className='bg-blue-50 rounded-xl p-4'><div className='text-xs text-slate-600'>เลข OTOP / OTOP Number</div><div className='font-bold mt-1'>{selected.operator.otop_no || '—'}</div></div>
+                  <div className='bg-orange-50 rounded-xl p-4'><div className='text-xs text-slate-600'>ที่ตั้ง / Location</div><div className='font-bold mt-1'>{[selected.operator.subdistrict, selected.operator.district, selected.operator.province].filter(Boolean).join(' · ')}</div></div>
+                  <div className='bg-blue-50 rounded-xl p-4'><div className='text-xs text-slate-600'>ประเภทผู้ประกอบการ / Operator Type</div><div className='font-bold mt-1'>{selected.operator.operator_type || '—'}</div></div>
+                  <div className='bg-orange-50 rounded-xl p-4'><div className='text-xs text-slate-600'>ระดับ / ดาว OTOP · OTOP Level / Stars</div><div className='font-bold mt-1'>{selected.profile?.otop_level || 'ยังไม่ได้อัปเดต'} {selected.profile?.otop_stars ? '· ' + '★'.repeat(selected.profile.otop_stars) : ''}</div></div>
                 </div>
 
                 {selected.profile && (
