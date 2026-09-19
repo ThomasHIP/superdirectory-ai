@@ -1,0 +1,458 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  margin: 0;
+  font-family:
+    Inter,
+    'Noto Sans Thai',
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    sans-serif;
+}
+
+input:focus {
+  outline: 2px solid #f97316;
+  border-color: #f97316;
+}
+
+.sd-native-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 18px;
+  color: #0b2f69;
+}
+
+.sd-native-glyphs {
+  position: relative;
+  display: flex;
+  align-items: center;
+  line-height: 0.8;
+  font-family: Impact, 'Arial Black', sans-serif;
+  font-weight: 900;
+  font-style: italic;
+  letter-spacing: -0.18em;
+  padding-right: 24px;
+}
+
+.sd-native-s,
+.sd-native-d {
+  display: inline-block;
+  font-size: clamp(96px, 16vw, 190px);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  filter: drop-shadow(0 6px 9px rgba(0, 0, 0, 0.18));
+}
+
+.sd-native-s {
+  background-image: linear-gradient(180deg, #18b8ff 0%, #1768cf 38%, #051b68 100%);
+  z-index: 2;
+}
+
+.sd-native-d {
+  margin-left: -0.03em;
+  background-image: linear-gradient(180deg, #ffc51e 0%, #ff8d00 35%, #ff4a08 100%);
+  z-index: 1;
+}
+
+.sd-native-pixels {
+  position: absolute;
+  right: -2px;
+  top: 5%;
+  width: 48px;
+  height: 82%;
+}
+
+.sd-native-pixels i {
+  position: absolute;
+  display: block;
+  width: 9px;
+  height: 9px;
+  background: #ff7d0c;
+}
+
+.sd-native-pixels i:nth-child(1) { left: 1px; top: 12%; }
+.sd-native-pixels i:nth-child(2) { left: 17px; top: 2%; width: 7px; height: 7px; }
+.sd-native-pixels i:nth-child(3) { left: 30px; top: 18%; background: #0d55aa; width: 7px; height: 7px; }
+.sd-native-pixels i:nth-child(4) { left: 10px; top: 35%; width: 12px; height: 12px; }
+.sd-native-pixels i:nth-child(5) { left: 31px; top: 43%; }
+.sd-native-pixels i:nth-child(6) { left: 3px; top: 57%; background: #0b4a9e; width: 7px; height: 7px; }
+.sd-native-pixels i:nth-child(7) { left: 20px; top: 66%; width: 11px; height: 11px; }
+.sd-native-pixels i:nth-child(8) { left: 36px; top: 76%; width: 6px; height: 6px; }
+.sd-native-pixels i:nth-child(9) { left: 8px; top: 86%; width: 7px; height: 7px; }
+
+.sd-native-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.sd-native-name {
+  white-space: nowrap;
+  font-size: clamp(28px, 5vw, 66px);
+  line-height: 0.95;
+  font-weight: 900;
+  letter-spacing: -0.055em;
+  color: #0c2f6b;
+}
+
+.sd-native-name span,
+.sd-native-tag span {
+  color: #ff650f;
+}
+
+.sd-native-tag {
+  font-size: clamp(9px, 1.6vw, 16px);
+  font-weight: 800;
+  letter-spacing: 0.23em;
+  white-space: nowrap;
+  color: #163a73;
+}
+
+.sd-native-brand-compact {
+  gap: 12px;
+}
+
+.sd-native-brand-compact .sd-native-s,
+.sd-native-brand-compact .sd-native-d {
+  font-size: 62px;
+}
+
+.sd-native-brand-compact .sd-native-pixels {
+  width: 28px;
+  height: 54px;
+  right: 4px;
+}
+
+.sd-native-brand-compact .sd-native-pixels i {
+  transform: scale(.68);
+  transform-origin: top left;
+}
+
+.sd-native-brand-compact .sd-native-glyphs {
+  padding-right: 14px;
+}
+
+.sd-native-brand-compact .sd-native-name {
+  font-size: clamp(20px, 4vw, 34px);
+}
+
+.sd-native-brand-compact .sd-native-tag {
+  font-size: clamp(6px, 1.2vw, 10px);
+  letter-spacing: 0.18em;
+}
+
+.sd-intro {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 50% 42%, rgba(18, 73, 128, 0.55), transparent 36%),
+    linear-gradient(180deg, #071c31 0%, #082d4c 46%, #031220 100%);
+  opacity: 1;
+  transition: opacity 600ms ease, visibility 600ms ease;
+}
+
+.sd-intro-leaving {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.sd-intro-stage {
+  width: min(92vw, 950px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transform: translateY(-1vh);
+}
+
+.sd-intro .sd-native-brand {
+  flex-direction: column;
+  gap: 24px;
+}
+
+.sd-intro .sd-native-copy {
+  align-items: center;
+}
+
+.sd-intro .sd-native-name {
+  color: #fff;
+  text-shadow: 0 8px 28px rgba(0,0,0,.35);
+}
+
+.sd-intro .sd-native-tag {
+  color: rgba(255,255,255,.88);
+}
+
+.sd-native-brand-animated .sd-native-s {
+  animation: sd-s-in 820ms cubic-bezier(.16,.86,.3,1) 100ms both;
+}
+
+.sd-native-brand-animated .sd-native-d {
+  animation: sd-d-in 820ms cubic-bezier(.16,.86,.3,1) 100ms both;
+}
+
+.sd-native-brand-animated .sd-native-pixels i {
+  opacity: 0;
+  animation: sd-logo-pixel 900ms ease-out forwards;
+}
+
+.sd-native-brand-animated .sd-native-pixels i:nth-child(1) { animation-delay: 640ms; }
+.sd-native-brand-animated .sd-native-pixels i:nth-child(2) { animation-delay: 710ms; }
+.sd-native-brand-animated .sd-native-pixels i:nth-child(3) { animation-delay: 760ms; }
+.sd-native-brand-animated .sd-native-pixels i:nth-child(4) { animation-delay: 820ms; }
+.sd-native-brand-animated .sd-native-pixels i:nth-child(5) { animation-delay: 880ms; }
+.sd-native-brand-animated .sd-native-pixels i:nth-child(6) { animation-delay: 920ms; }
+.sd-native-brand-animated .sd-native-pixels i:nth-child(7) { animation-delay: 970ms; }
+.sd-native-brand-animated .sd-native-pixels i:nth-child(8) { animation-delay: 1020ms; }
+.sd-native-brand-animated .sd-native-pixels i:nth-child(9) { animation-delay: 1080ms; }
+
+.sd-native-brand-animated .sd-native-copy {
+  opacity: 0;
+  transform: translateY(18px);
+  animation: sd-copy-in 620ms ease 900ms forwards;
+}
+
+.sd-intro-label {
+  margin-top: 30px;
+  color: #ffffff;
+  font-size: clamp(14px, 2.6vw, 24px);
+  font-weight: 800;
+  letter-spacing: 0.24em;
+  opacity: 0;
+  transform: translateY(16px);
+  animation: sd-copy-in 620ms ease 1320ms forwards;
+}
+
+.sd-intro-line {
+  width: min(44vw, 280px);
+  height: 1px;
+  margin-top: 16px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,.75), transparent);
+  transform: scaleX(0);
+  animation: sd-line-open 520ms ease 1500ms forwards;
+}
+
+.sd-intro-glow {
+  position: absolute;
+  width: 36vw;
+  height: 36vw;
+  border-radius: 999px;
+  filter: blur(80px);
+  opacity: 0.18;
+  pointer-events: none;
+}
+
+.sd-intro-glow-one {
+  left: -10vw;
+  top: 10vh;
+  background: #0e8dff;
+  animation: sd-float-a 4s ease-in-out infinite alternate;
+}
+
+.sd-intro-glow-two {
+  right: -12vw;
+  bottom: 5vh;
+  background: #ff7a00;
+  animation: sd-float-b 4s ease-in-out infinite alternate;
+}
+
+.sd-pixel-field {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.sd-pixel-field span {
+  position: absolute;
+  width: 9px;
+  height: 9px;
+  background: #ff861a;
+  opacity: 0;
+  animation: sd-pixel 1.5s ease-out forwards;
+}
+
+.sd-pixel-field span:nth-child(1) { left: 72%; top: 31%; animation-delay: 280ms; }
+.sd-pixel-field span:nth-child(2) { left: 77%; top: 37%; animation-delay: 420ms; background: #1581e8; }
+.sd-pixel-field span:nth-child(3) { left: 82%; top: 27%; animation-delay: 520ms; width: 6px; height: 6px; }
+.sd-pixel-field span:nth-child(4) { left: 69%; top: 43%; animation-delay: 620ms; width: 7px; height: 7px; }
+.sd-pixel-field span:nth-child(5) { left: 25%; top: 65%; animation-delay: 720ms; background: #1b78d0; }
+.sd-pixel-field span:nth-child(6) { left: 31%; top: 72%; animation-delay: 820ms; width: 6px; height: 6px; }
+.sd-pixel-field span:nth-child(7) { left: 64%; top: 67%; animation-delay: 900ms; }
+.sd-pixel-field span:nth-child(8) { left: 83%; top: 59%; animation-delay: 1040ms; background: #1769b4; }
+
+@keyframes sd-s-in {
+  from { transform: translateX(-130px) scale(.88); opacity: 0; filter: blur(9px); }
+  to { transform: translateX(0) scale(1); opacity: 1; filter: blur(0); }
+}
+
+@keyframes sd-d-in {
+  from { transform: translateX(130px) scale(.88); opacity: 0; filter: blur(9px); }
+  to { transform: translateX(0) scale(1); opacity: 1; filter: blur(0); }
+}
+
+@keyframes sd-logo-pixel {
+  from { opacity: 0; transform: translate(28px, 0) scale(.25) rotate(0deg); }
+  55% { opacity: 1; }
+  to { opacity: 1; transform: translate(0, 0) scale(1) rotate(0deg); }
+}
+
+@keyframes sd-copy-in {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes sd-line-open {
+  to { transform: scaleX(1); }
+}
+
+@keyframes sd-pixel {
+  0% { opacity: 0; transform: translate3d(35px, 20px, 0) scale(.4) rotate(0deg); }
+  40% { opacity: .9; }
+  100% { opacity: 0; transform: translate3d(-20px, -25px, 0) scale(1.25) rotate(90deg); }
+}
+
+@keyframes sd-float-a {
+  to { transform: translate(7vw, 3vh) scale(1.1); }
+}
+
+@keyframes sd-float-b {
+  to { transform: translate(-6vw, -4vh) scale(1.08); }
+}
+
+@media (max-width: 640px) {
+  .sd-native-brand {
+    gap: 9px;
+  }
+
+  .sd-native-brand:not(.sd-native-brand-compact) {
+    flex-direction: column;
+  }
+
+  .sd-native-glyphs {
+    padding-right: 20px;
+  }
+
+  .sd-native-s,
+  .sd-native-d {
+    font-size: 112px;
+  }
+
+  .sd-native-copy {
+    align-items: center;
+  }
+
+  .sd-native-name {
+    font-size: 31px;
+  }
+
+  .sd-native-tag {
+    font-size: 8px;
+    letter-spacing: 0.15em;
+  }
+
+  .sd-native-brand-compact .sd-native-s,
+  .sd-native-brand-compact .sd-native-d {
+    font-size: 52px;
+  }
+
+  .sd-native-brand-compact .sd-native-name {
+    font-size: 19px;
+  }
+
+  .sd-native-brand-compact .sd-native-tag {
+    font-size: 5.5px;
+  }
+
+  .sd-intro-label {
+    margin-top: 24px;
+    font-size: 14px;
+    letter-spacing: 0.14em;
+  }
+}
+
+
+.profile-chip {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 9999px;
+  background: #ecfdf5;
+  color: #047857;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.875rem;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.profile-action {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 0.75rem;
+  background: #eff6ff;
+  color: #1d4ed8;
+  padding: 0.75rem;
+  font-weight: 900;
+  text-decoration: none;
+}
+
+.profile-field {
+  display: block;
+  border-radius: 0.9rem;
+  padding: 0.75rem;
+  border: 1px solid transparent;
+}
+
+.profile-field > span {
+  display: block;
+  margin-bottom: 0.45rem;
+  font-size: 0.78rem;
+  line-height: 1.3;
+  font-weight: 800;
+  color: #334155;
+}
+
+.profile-field.field-blue {
+  background: #eff6ff;
+  border-color: #bfdbfe;
+}
+
+.profile-field.field-orange {
+  background: #fff7ed;
+  border-color: #fed7aa;
+}
+
+.profile-input {
+  width: 100%;
+  border: 1px solid rgba(148, 163, 184, 0.45);
+  border-radius: 0.75rem;
+  padding: 0.75rem;
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.profile-textarea {
+  min-height: 5.5rem;
+  resize: vertical;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sd-native-brand-animated .sd-native-s,
+  .sd-native-brand-animated .sd-native-d,
+  .sd-native-brand-animated .sd-native-pixels i,
+  .sd-native-brand-animated .sd-native-copy,
+  .sd-intro-label,
+  .sd-intro-line,
+  .sd-pixel-field span {
+    animation-duration: 1ms !important;
+    animation-delay: 0ms !important;
+  }
+}
