@@ -239,7 +239,7 @@ function App() {
           <div className='max-w-6xl mx-auto px-5 py-12'>
             <div className='text-orange-400 font-black tracking-widest'>FULL 2026 OTOP REGISTRY</div>
             <h1 className='text-4xl md:text-6xl font-black mt-2'>98,177 OTOP Records</h1>
-            <p className='text-blue-100 mt-3 text-lg'>ค้นหาผู้ประกอบการ OTOP ทั่วประเทศ และอัปเดตข้อมูลธุรกิจของคุณ</p>
+            <p className='text-blue-100 mt-3 text-lg'>ค้นหาผู้ประกอบการ OTOP ทั่วประเทศ และอัพเดทข้อมูลธุรกิจของคุณ</p>
           </div>
         </section>
 
