@@ -2,4 +2,14 @@
 
 Cloudflare Pages frontend for Super Directory AI.
 
-The OTOP registry data remains in the existing Supabase backend.
+The 98,177-record OTOP registry remains in the existing Supabase backend.
+
+## Cloudflare Pages
+
+- Project name: `superdirectory-ai`
+- Production branch: `main`
+- Framework preset: Vite
+- Build command: `npm run build`
+- Build output directory: `dist`
+
+No database migration is required for Cloudflare Pages.
