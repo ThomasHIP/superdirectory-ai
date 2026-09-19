@@ -13,3 +13,5 @@ The 98,177-record OTOP registry remains in the existing Supabase backend.
 - Build output directory: `dist`
 
 No database migration is required for Cloudflare Pages.
+
+Deployment trigger: Cloudflare Pages production build.
